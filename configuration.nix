@@ -91,7 +91,7 @@ networking.networkmanager.enable = true;
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "22.05"; # Did you read the comment?
 
-nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfree = true;
 
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.opengl.enable = true;
@@ -109,11 +109,17 @@ nixpkgs.config.allowUnfree = true;
   enable = true;
   autosuggestions.enable = true;
   ohMyZsh = {
-    enable = true;
-    theme = "ys";
-    plugins = [ "git" "python" "man" ];
+      enable = true;
+      theme = "ys";
+      plugins = [ "git" "python" "man" ];
+    };
   };
-};
-
+  systemd.services.clash = {
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      ExecStart = "${pkgs.clash}/bin/clash -d /home/someone/clash";
+      ExecStop = "kill `ps -a | grep clash |awk '{print $1}'`";
+    };
+  };
 }
 
