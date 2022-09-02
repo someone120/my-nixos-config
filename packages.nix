@@ -1,6 +1,8 @@
 { config, pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
+    nixfmt
+    obs-studio
     ghc
     zsh
     clash
