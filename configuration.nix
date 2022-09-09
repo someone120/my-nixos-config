@@ -28,7 +28,7 @@
   i18n.defaultLocale = "zh_CN.UTF-8";
   i18n.inputMethod = {
     enabled = "ibus";
-    ibus.engines = with pkgs.ibus-engines; [ libpinyin ];
+    ibus.engines = with pkgs.ibus-engines; [ libpinyin rime ];
   };
 
   # 中文字体
@@ -112,10 +112,19 @@
   };
   systemd.services.clash = {
     wantedBy = [ "multi-user.target" ];
+    after = [ "network.target" ];
+    description = "Start the clash client.";
     serviceConfig = {
+      Type = "simple";
       ExecStart = "${pkgs.clash}/bin/clash -d /home/someone/clash";
       ExecStop = "kill `ps -a | grep clash |awk '{print $1}'`";
     };
+  };
+  nixpkgs.config.packageOverrides = pkgs: {
+    nur = import (builtins.fetchTarball
+      "https://github.com/nix-community/NUR/archive/master.tar.gz") {
+        inherit pkgs;
+      };
   };
 }
 

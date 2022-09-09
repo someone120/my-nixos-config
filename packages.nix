@@ -1,15 +1,16 @@
-{ config, pkgs, ... }:
-{
+{ config, pkgs, ... }: {
+  # System packages
   environment.systemPackages = with pkgs; [
     nixfmt
     obs-studio
+    google-chrome
     ghc
     zsh
     clash
     nyancat
     neovim
-    firefox
     python3
+    nodejs
     rustup
     spotify
     tdesktop
@@ -22,5 +23,9 @@
     gdb
     vlc
     fzf
+    hugo
+    screen
+    ipfs
+    ibus-engines.rime
   ];
 }
