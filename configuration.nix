@@ -13,9 +13,8 @@
   ];
 
   # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.supportedFilesystems = [ "ntfs" ];
+  #boot.loader.systemd-boot.enable = true;
+  #boot.loader.efi.canTouchEfiVariables = true;
 
   # 时区
   time.timeZone = "Asia/Shanghai";
