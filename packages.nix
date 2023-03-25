@@ -2,6 +2,7 @@
   # System packages
   environment.systemPackages = with pkgs; [
     obsidian
+    jetbrains-mono
     qv2ray
     nixfmt
     obs-studio
@@ -15,6 +16,8 @@
     nyancat
     neovim
     python3
+    python310Packages.pip
+    conda
     nodejs
     rustup
     spotify
@@ -23,6 +26,8 @@
     android-studio
     syncthing
     docker
+    thunderbird
+    anki-bin
     keepassxc
     git
     gcc

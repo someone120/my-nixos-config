@@ -10,6 +10,8 @@
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./packages.nix
+    ./clash.nix
+    ./grub.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -96,10 +98,10 @@
 
   users.users.someone = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel" "docker" ];
   };
   users.defaultUserShell = pkgs.zsh;
-
+virtualisation.docker.storageDriver = "btrfs";
   programs.zsh = {
     enable = true;
     autosuggestions.enable = true;
@@ -109,16 +111,10 @@
       plugins = [ "git" "python" "man" ];
     };
   };
-  systemd.services.clash = {
-    wantedBy = [ "multi-user.target" ];
-    after = [ "network.target" ];
-    description = "Start the clash client.";
-    serviceConfig = {
-      Type = "simple";
-      ExecStart = "${pkgs.clash}/bin/clash -d /home/someone/clash";
-      ExecStop = "kill `ps -a | grep clash |awk '{print $1}'`";
-    };
-  };
+  virtualisation.docker.enable = true;
+  
+
+  
   nixpkgs.config.packageOverrides = pkgs: {
     nur = import (builtins.fetchTarball
       "https://github.com/nix-community/NUR/archive/master.tar.gz") {
