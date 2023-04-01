@@ -39,5 +39,6 @@
     screen
     ipfs
     ibus-engines.rime
+    nodePackages.yarn;
   ];
 }
