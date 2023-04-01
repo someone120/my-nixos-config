@@ -5,13 +5,21 @@
 { config, pkgs, ... }:
 
 {
+  nix = {
+    package = pkgs.nixUnstable;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+  };
   nix.settings.substituters =
     [ "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store" ];
-  imports = [ # Include the results of the hardware scan.
+  imports = [
+    # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./packages.nix
     ./clash.nix
     ./grub.nix
+    ./syncthing.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -101,7 +109,7 @@
     extraGroups = [ "wheel" "docker" ];
   };
   users.defaultUserShell = pkgs.zsh;
-virtualisation.docker.storageDriver = "btrfs";
+  virtualisation.docker.storageDriver = "btrfs";
   programs.zsh = {
     enable = true;
     autosuggestions.enable = true;
@@ -112,12 +120,14 @@ virtualisation.docker.storageDriver = "btrfs";
     };
   };
   virtualisation.docker.enable = true;
-  
 
-  
+
+
   nixpkgs.config.packageOverrides = pkgs: {
-    nur = import (builtins.fetchTarball
-      "https://github.com/nix-community/NUR/archive/master.tar.gz") {
+    nur = import
+      (builtins.fetchTarball
+        "https://github.com/nix-community/NUR/archive/master.tar.gz")
+      {
         inherit pkgs;
       };
   };
