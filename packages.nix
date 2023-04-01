@@ -4,7 +4,7 @@
     obsidian
     jetbrains-mono
     qv2ray
-    nixfmt
+    nixpkgs-fmt
     obs-studio
     google-chrome
     ghc
