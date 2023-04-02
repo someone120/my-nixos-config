@@ -25,6 +25,7 @@
     vscode
     android-studio
     syncthing
+    element
     docker
     thunderbird
     anki-bin
