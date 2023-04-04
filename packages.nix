@@ -18,14 +18,15 @@
     python3
     python310Packages.pip
     conda
-    nodejs
+    # nodejs
+    nodejs-16_x
     rustup
     spotify
     tdesktop
     vscode
     android-studio
     syncthing
-    element
+    element-desktop
     docker
     thunderbird
     anki-bin
@@ -40,6 +41,7 @@
     screen
     ipfs
     ibus-engines.rime
-    nodePackages.yarn
+    # nodePackages.yarn
+    yarn
   ];
 }

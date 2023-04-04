@@ -18,6 +18,7 @@
     ./hardware-configuration.nix
     ./packages.nix
     ./clash.nix
+    ./overlays.nix
     ./grub.nix
     ./syncthing.nix
   ];
