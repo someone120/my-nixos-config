@@ -18,8 +18,8 @@
     python3
     python310Packages.pip
     conda
-    # nodejs
-    nodejs-16_x
+    nodejs
+    # nodejs-16_x
     rustup
     spotify
     tdesktop
