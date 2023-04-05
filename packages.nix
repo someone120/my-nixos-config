@@ -28,7 +28,7 @@
     syncthing
     element-desktop
     docker
-    thunderbird
+    thunderbird-bin
     anki-bin
     keepassxc
     git
