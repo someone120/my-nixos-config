@@ -11,6 +11,8 @@
     zsh
     xray
     clash
+    albert
+    plank
     v2ray-geoip
     v2ray-domain-list-community
     nyancat
