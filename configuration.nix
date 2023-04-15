@@ -21,6 +21,17 @@
     ./overlays.nix
     ./grub.nix
     ./syncthing.nix
+    ./vscode.nix
+  ];
+
+  vscode.user = "someone";
+  vscode.homeDir = "/home/someone";
+  vscode.extensions = with pkgs.vscode-extensions; [
+    ms-vscode.cpptools
+  ];
+  nixpkgs.latestPackages = [
+    "vscode"
+    "vscode-extensions"
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -54,6 +65,9 @@
   # 桌面系统不用费心配置网络，直接交给 NetworkManager 管理
   networking.networkmanager.enable = true;
 
+  networking.extraHosts = ''
+    104.16.80.69 proxy.someone120.one
+  '';
   services.xserver.enable = true;
 
   services.xserver.displayManager.gdm.enable = true;

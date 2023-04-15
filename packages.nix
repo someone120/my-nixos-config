@@ -1,6 +1,7 @@
 { config, pkgs, ... }: {
   # System packages
   environment.systemPackages = with pkgs; [
+  ffmpeg
     obsidian
     jetbrains-mono
     qv2ray
@@ -16,10 +17,12 @@
     v2ray-domain-list-community
     nyancat
     neovim
+    lm_sensors
     python3
     python310Packages.pip
     conda
     nodejs
+    pkg-config
     # nodejs-16_x
     rustup
     spotify
@@ -35,6 +38,7 @@
     git
     gcc
     gdb
+    gnome.pomodoro
     kdeconnect
     vlc
     fzf
