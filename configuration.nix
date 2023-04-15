@@ -21,18 +21,8 @@
     ./overlays.nix
     ./grub.nix
     ./syncthing.nix
-    ./vscode.nix
   ];
 
-  vscode.user = "someone";
-  vscode.homeDir = "/home/someone";
-  vscode.extensions = with pkgs.vscode-extensions; [
-    ms-vscode.cpptools
-  ];
-  nixpkgs.latestPackages = [
-    "vscode"
-    "vscode-extensions"
-  ];
 
   # Use the systemd-boot EFI boot loader.
   #boot.loader.systemd-boot.enable = true;
