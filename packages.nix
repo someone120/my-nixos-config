@@ -1,7 +1,7 @@
 { config, pkgs, ... }: {
   # System packages
   environment.systemPackages = with pkgs; [
-  ffmpeg
+    ffmpeg
     obsidian
     jetbrains-mono
     qv2ray
@@ -48,5 +48,14 @@
     ibus-engines.rime
     # nodePackages.yarn
     yarn
+    patchelf
+    glibc
+
+    (vscode-with-extensions.override {
+
+      vscodeExtensions = with vscode-extensions; [
+        ms-vscode.cpptools
+      ];
+    })
   ];
 }
